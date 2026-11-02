@@ -129,7 +129,8 @@ p { margin: 0; max-width: 62ch; }
 
 /* Figures */
 .figures { background: var(--bg); color: var(--fg); }
-.figures .wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: 0; }
+.figures .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-block: 0; }
+@media (max-width: 1000px) { .figures .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); } .fig:nth-child(3) { padding-left: 0; border-left: 0; } .fig:nth-child(n+3) { border-top: 1px solid var(--rule); } }
 .figures + .sec > .wrap { border-top: 1px solid var(--rule); }
 .fig { padding: 56px 32px 64px 0; display: grid; gap: 10px; align-content: start; }
 .fig + .fig { padding-left: 32px; border-left: 1px solid var(--rule); }
@@ -253,6 +254,15 @@ p { margin: 0; max-width: 62ch; }
 .press-body blockquote footer { margin-top: 12px; font-family: var(--sans); font-style: normal; }
 @media (max-width: 900px) { .press figure, .press-body { grid-column: 1 / -1; } .press figure { min-height: 0; aspect-ratio: 16 / 10; max-width: 100%; } }
 
+.news { border-top: 1px solid var(--fg); }
+.news-item { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px 32px; padding-block: 36px; border-bottom: 1px solid var(--rule); }
+.news-item > .label { grid-column: 1 / span 3; padding-top: 4px; }
+.news-body { grid-column: 4 / span 8; display: grid; gap: 16px; min-width: 0; }
+.news-body h3 { font-weight: 300; font-size: clamp(1.4rem, 2.3vw, 2rem); letter-spacing: -.025em; line-height: 1.18; }
+.news-body h3 a { text-decoration: none; }
+.news-body h3 a:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.news-body .link { justify-self: start; }
+@media (max-width: 900px) { .news-item > .label, .news-body { grid-column: 1 / -1; } }
 /* Leadership */
 .lead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px 32px; border-top: 1px solid var(--fg); padding-top: 36px; }
 .lead .who { grid-column: 1 / span 3; display: grid; gap: 8px; align-content: start; }
@@ -325,6 +335,7 @@ p { margin: 0; max-width: 62ch; }
     <div class="fig"><b>1979</b><span>Our family begins owning and operating Long Island real estate</span></div>
     <div class="fig"><b>3</b><span>Generations of ownership on Long Island</span></div>
     <div class="fig"><b>13</b><span>Properties under management on Long Island</span></div>
+    <div class="fig"><b>500,000+</b><span>Square feet owned</span></div>
   </div>
 </section>
 
@@ -486,14 +497,24 @@ p { margin: 0; max-width: 62ch; }
       <span class="label">Press</span>
       <div class="body"><h2>News</h2></div>
     </div>
-    <div class="press">
-      <div class="press-body">
+    <div class="news">
+      <article class="news-item">
+        <span class="label">October 2025</span>
+        <div class="news-body">
+          <span class="label">Long Island Business News</span>
+          <h3><a href="https://libn.com/2025/10/09/reiffman-plainview-medical-office-redevelopment/" target="_blank" rel="noopener">Reiffman Group's medical office redevelopment in Plainview</a></h3>
+          <a class="link" href="https://libn.com/2025/10/09/reiffman-plainview-medical-office-redevelopment/" target="_blank" rel="noopener">Read the article <svg viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
+        </div>
+      </article>
+      <article class="news-item">
         <span class="label">April 2025</span>
-        <h3>Reiffman Group expands its healthcare portfolio with a sale-leaseback and redevelopment of a radiology facility</h3>
-        <p class="muted">The conversion of a former bank in Hauppauge into an advanced imaging center for Zwanger-Pesiri Radiology, with MRI, CT, mammography and dedicated women's imaging suites.</p>
-        <blockquote>&ldquo;Our partnership with Zwanger-Pesiri Radiology exemplifies our commitment to creating purpose-built healthcare facilities that elevate clinical operations for tenants.&rdquo;<footer class="label">Ross Reiffman</footer></blockquote>
-        <a class="link" href="https://rreiffman9.wixsite.com/my-site-3/post/reiffman-group-expands-healthcare-portfolio-with-sale-leaseback-and-redevelopment-of-radiology-facil" target="_blank" rel="noopener">Read the release <svg viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
-      </div>
+        <div class="news-body">
+          <span class="label">Press release</span>
+          <h3><a href="https://rreiffman9.wixsite.com/my-site-3/post/reiffman-group-expands-healthcare-portfolio-with-sale-leaseback-and-redevelopment-of-radiology-facil" target="_blank" rel="noopener">Reiffman Group expands its healthcare portfolio with a sale-leaseback and redevelopment of a radiology facility</a></h3>
+          <p class="muted">The conversion of a former bank in Hauppauge into an advanced imaging center for Zwanger-Pesiri Radiology, with MRI, CT, mammography and dedicated women's imaging suites.</p>
+          <a class="link" href="https://rreiffman9.wixsite.com/my-site-3/post/reiffman-group-expands-healthcare-portfolio-with-sale-leaseback-and-redevelopment-of-radiology-facil" target="_blank" rel="noopener">Read the release <svg viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
