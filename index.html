@@ -176,7 +176,7 @@ p { margin: 0; max-width: 62ch; }
 @media (max-width: 700px) { .map-scroll svg { width: 820px; max-width: none; } }
 .map { position: relative; }
 .map .prop, .map .mkt, .map .cty { cursor: pointer; outline: none; }
-.map .region { pointer-events: none; }
+.map .region, .map .pin { pointer-events: none; }
 .map .cty:hover .focus, .map .cty:focus-visible .focus, .map .cty.is-sel .focus { fill: var(--map-line); }
 .map .hit { fill: transparent; }
 .map .mkt:hover .exp, .map .mkt:focus-visible .exp, .map .mkt.is-sel .exp { fill: var(--map-focus); }
@@ -401,25 +401,25 @@ p { margin: 0; max-width: 62ch; }
 <text class="region" x="908" y="265" text-anchor="middle">Suffolk</text>
 <text class="region" x="606" y="278" text-anchor="middle">Nassau</text>
 <g class="mkt" data-info="m-ee" tabindex="0" role="button" aria-label="East End"><circle class="next-ring" cx="1044.3" cy="217.8" r="16"/><circle class="hit" cx="1044.3" cy="217.8" r="28"/><text class="next" x="1044" y="194" text-anchor="middle">East End</text></g>
-<g class="pin" data-pin="hu" transform="translate(688.9 250.7)"><g class="prop" data-info="p-755" tabindex="0" role="button"><circle class="hit" cx="0" cy="0" r="9"/><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g></g>
-<g class="pin" data-pin="ha" transform="translate(759.6 262.3)"><g class="prop" data-info="p-99" tabindex="0" role="button"><circle class="hit" cx="0" cy="0" r="9"/><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g></g>
-<g class="pin" data-pin="sy" transform="translate(665.2 270.8)"><g class="prop" data-info="p-485" tabindex="0" role="button"><circle class="hit" cx="0" cy="0" r="9"/><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g></g>
-<g class="pin" data-pin="pv" transform="translate(674.9 287.0)"><g class="prop" data-info="p-700" tabindex="0" role="button"><circle class="hit" cx="0" cy="0" r="9"/><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g><g class="prop" data-info="p-146" tabindex="0" role="button"><circle class="hit" cx="-5" cy="-9" r="9"/><circle class="halo" cx="-5" cy="-9" r="4.2"/><circle class="dot" cx="-5" cy="-9" r="4.2"/></g><g class="prop" data-info="p-146a" tabindex="0" role="button"><circle class="hit" cx="4" cy="-10" r="9"/><circle class="halo" cx="4" cy="-10" r="4.2"/><circle class="dot" cx="4" cy="-10" r="4.2"/></g></g>
-<g class="pin" data-pin="hix" transform="translate(656.8 291.3)"><g class="prop" data-info="p-hix1" tabindex="0" role="button"><circle class="hit" cx="0" cy="0" r="9"/><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g><g class="prop" data-info="p-hix2" tabindex="0" role="button"><circle class="hit" cx="-8" cy="3" r="9"/><circle class="halo" cx="-8" cy="3" r="4.2"/><circle class="dot" cx="-8" cy="3" r="4.2"/></g><g class="prop" data-info="p-hix3" tabindex="0" role="button"><circle class="hit" cx="-4" cy="-8" r="9"/><circle class="halo" cx="-4" cy="-8" r="4.2"/><circle class="dot" cx="-4" cy="-8" r="4.2"/></g></g>
-<g class="pin" data-pin="wh" transform="translate(615.9 318.2)"><g class="prop" data-info="p-600" tabindex="0" role="button"><circle class="hit" cx="0" cy="0" r="9"/><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g><g class="prop" data-info="p-616" tabindex="0" role="button"><circle class="hit" cx="8" cy="-2" r="9"/><circle class="halo" cx="8" cy="-2" r="4.2"/><circle class="dot" cx="8" cy="-2" r="4.2"/></g></g>
-<g class="pin" data-pin="rvc" transform="translate(619.1 338.1)"><g class="prop" data-info="p-100nva" tabindex="0" role="button"><circle class="hit" cx="0" cy="0" r="9"/><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g><g class="prop" data-info="p-242" tabindex="0" role="button"><circle class="hit" cx="8" cy="2" r="9"/><circle class="halo" cx="8" cy="2" r="4.2"/><circle class="dot" cx="8" cy="2" r="4.2"/></g><g class="prop" data-info="p-sunrise" tabindex="0" role="button"><circle class="hit" cx="16" cy="-1" r="9"/><circle class="halo" cx="16" cy="-1" r="4.2"/><circle class="dot" cx="16" cy="-1" r="4.2"/></g></g>
+<g class="pin" data-pin="hu" transform="translate(688.9 250.7)"><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g>
+<g class="pin" data-pin="ha" transform="translate(759.6 262.3)"><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g>
+<g class="pin" data-pin="sy" transform="translate(665.2 270.8)"><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/></g>
+<g class="pin" data-pin="pv" transform="translate(674.9 287.0)"><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/><circle class="halo" cx="-5" cy="-9" r="4.2"/><circle class="dot" cx="-5" cy="-9" r="4.2"/><circle class="halo" cx="4" cy="-10" r="4.2"/><circle class="dot" cx="4" cy="-10" r="4.2"/></g>
+<g class="pin" data-pin="hix" transform="translate(656.8 291.3)"><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/><circle class="halo" cx="-8" cy="3" r="4.2"/><circle class="dot" cx="-8" cy="3" r="4.2"/><circle class="halo" cx="-4" cy="-8" r="4.2"/><circle class="dot" cx="-4" cy="-8" r="4.2"/></g>
+<g class="pin" data-pin="wh" transform="translate(615.9 318.2)"><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/><circle class="halo" cx="8" cy="-2" r="4.2"/><circle class="dot" cx="8" cy="-2" r="4.2"/></g>
+<g class="pin" data-pin="rvc" transform="translate(619.1 338.1)"><circle class="halo" cx="0" cy="0" r="4.2"/><circle class="dot" cx="0" cy="0" r="4.2"/><circle class="halo" cx="8" cy="2" r="4.2"/><circle class="dot" cx="8" cy="2" r="4.2"/><circle class="halo" cx="16" cy="-1" r="4.2"/><circle class="dot" cx="16" cy="-1" r="4.2"/></g>
 </svg></div>
       <div class="map-info" id="map-info" aria-live="polite"><div class="txt">
         <span class="label">Explore</span>
-        <h3>Select a property or market</h3>
-        <p class="muted">Tap a dot to see a building, or a county or shaded market to see why we are there.</p>
+        <h3>Select a market</h3>
+        <p class="muted">Tap a county or a shaded market to see why we are there.</p>
       </div></div>
       <figcaption class="map-foot">
         <span class="key label">
           <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--pin)"/></svg>Holdings</span>
           <span><svg viewBox="0 0 12 12" aria-hidden="true"><rect x=".5" y=".5" width="11" height="11" fill="var(--map-nyc)" stroke="var(--map-line)"/><path d="M0 8L8 0M4 12L12 4M0 12L12 0" stroke="var(--map-line)" stroke-width="1.2"/></svg>Expansion markets</span>
         </span>
-        <span class="label">Select a dot or market</span>
+        <span class="label">Select a market</span>
       </figcaption>
     </figure>
   </div>
