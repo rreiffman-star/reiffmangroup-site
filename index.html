@@ -162,13 +162,15 @@ p { margin: 0; max-width: 62ch; }
 .map .next { fill: var(--fg); font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; opacity: .75; }
 .map .next-ring { fill: none; stroke: var(--fg); stroke-width: .9; stroke-dasharray: 2 4; opacity: .5; }
 .pin .halo { fill: var(--pin); opacity: .12; transform-box: fill-box; transform-origin: center; animation: pulse 3.6s ease-out infinite; }
-.pin .dot { fill: var(--pin); stroke: var(--map-water); stroke-width: 2; }
+.pin .dot { fill: var(--pin); stroke: var(--map-focus); stroke-width: 1.5; }
 .pin .n { fill: var(--pin-ink); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
 .pin .name { fill: var(--fg); font-family: var(--sans); font-size: 13px; font-weight: 400; letter-spacing: .01em; paint-order: stroke; stroke: var(--map-focus); stroke-width: 4px; stroke-linejoin: round; }
 .pin.is-on .halo { opacity: .35; }
 @keyframes pulse { 0% { transform: scale(1); opacity: .28; } 70%, 100% { transform: scale(2.2); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .pin .halo { animation: none; } }
-@media (max-width: 700px) { .pin .name, .map .next, .map .grid text, .map .water-label { display: none; } }
+.map-scroll { overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; }
+.map-scroll::-webkit-scrollbar { display: none; }
+@media (max-width: 700px) { .map-scroll svg { width: 940px; max-width: none; } }
 .map-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; padding-block: 18px 0; border-top: 1px solid var(--rule); }
 .key { display: flex; flex-wrap: wrap; gap: 8px 26px; }
 .key span { display: inline-flex; align-items: center; gap: 10px; }
@@ -353,7 +355,7 @@ p { margin: 0; max-width: 62ch; }
       </div>
     </div>
     <figure class="map">
-      <svg viewBox="0 0 1200 455" role="img" aria-labelledby="map-title"><title id="map-title">Map of Long Island showing Reiffman Group holdings in Rockville Centre, West Hempstead, Hicksville, Plainview, Syosset and Huntington, with Queens, Westchester and northern New Jersey marked as next markets</title>
+      <div class="map-scroll" tabindex="0" aria-label="Map of holdings, scroll sideways"><svg viewBox="0 0 1200 455" role="img" aria-labelledby="map-title"><title id="map-title">Map of Long Island showing Reiffman Group holdings in Rockville Centre, West Hempstead, Hicksville, Plainview, Syosset and Huntington, with Queens, Westchester and northern New Jersey marked as next markets</title>
 <rect class="water" width="1200" height="455"/>
 <g class="grid">
 <line x1="0" y1="386.0" x2="1200" y2="386.0"/><text x="1194" y="381.0" text-anchor="end">40.6&#176; N</text>
@@ -372,16 +374,17 @@ p { margin: 0; max-width: 62ch; }
 <circle class="next-ring" cx="135.7" cy="292.9" r="11"/><text class="next" x="136" y="275" text-anchor="middle">Queens</text>
 <circle class="next-ring" cx="182.6" cy="62.0" r="11"/><text class="next" x="201" y="66" text-anchor="start">Westchester</text>
 <circle class="next-ring" cx="31.3" cy="158.5" r="11"/><text class="next" x="47" y="163" text-anchor="start">Northern NJ</text>
-<g class="pin" data-pin="hu" tabindex="0" aria-label="Huntington: 1 property" transform="translate(362.1 204.7)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text class="n">1</text><text class="name" x="0" y="-20" text-anchor="middle">Huntington</text></g>
-<g class="pin" data-pin="sy" tabindex="0" aria-label="Syosset: 1 property" transform="translate(324.0 237.1)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text class="n">1</text><text class="name" x="-14" y="-12" text-anchor="end">Syosset</text></g>
-<g class="pin" data-pin="pv" tabindex="0" aria-label="Plainview: 3 properties" transform="translate(339.7 263.3)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text class="n">3</text><text class="name" x="16" y="20" text-anchor="start">Plainview</text></g>
-<g class="pin" data-pin="hix" tabindex="0" aria-label="Hicksville: 3 properties" transform="translate(310.4 270.2)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text class="n">3</text><text class="name" x="-14" y="24" text-anchor="end">Hicksville</text></g>
-<g class="pin" data-pin="wh" tabindex="0" aria-label="West Hempstead: 2 properties" transform="translate(244.7 313.6)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text class="n">2</text><text class="name" x="-16" y="5" text-anchor="end">West Hempstead</text></g>
-<g class="pin" data-pin="rvc" tabindex="0" aria-label="Rockville Centre: 2 properties" transform="translate(249.9 345.6)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text class="n">2</text><text class="name" x="16" y="5" text-anchor="start">Rockville Centre</text></g>
-</svg>
+<g class="pin" data-pin="hu" tabindex="0" aria-label="Huntington" transform="translate(362.1 204.7)"><circle class="halo" cx="0" cy="0" r="5.5"/><circle class="dot" cx="0" cy="0" r="5.5"/><text class="name" x="0" y="-14" text-anchor="middle">Huntington</text></g>
+<g class="pin" data-pin="ha" tabindex="0" aria-label="Hauppauge" transform="translate(475.8 223.3)"><circle class="halo" cx="0" cy="0" r="5.5"/><circle class="dot" cx="0" cy="0" r="5.5"/><text class="name" x="12" y="5" text-anchor="start">Hauppauge</text></g>
+<g class="pin" data-pin="sy" tabindex="0" aria-label="Syosset" transform="translate(324.0 237.1)"><circle class="halo" cx="0" cy="0" r="5.5"/><circle class="dot" cx="0" cy="0" r="5.5"/><text class="name" x="-12" y="-10" text-anchor="end">Syosset</text></g>
+<g class="pin" data-pin="pv" tabindex="0" aria-label="Plainview" transform="translate(339.7 263.3)"><circle class="halo" cx="0" cy="0" r="5.5"/><circle class="dot" cx="0" cy="0" r="5.5"/><circle class="halo" cx="-7" cy="-12" r="5.5"/><circle class="dot" cx="-7" cy="-12" r="5.5"/><circle class="halo" cx="5" cy="-14" r="5.5"/><circle class="dot" cx="5" cy="-14" r="5.5"/><text class="name" x="14" y="18" text-anchor="start">Plainview</text></g>
+<g class="pin" data-pin="hix" tabindex="0" aria-label="Hicksville" transform="translate(310.4 270.2)"><circle class="halo" cx="0" cy="0" r="5.5"/><circle class="dot" cx="0" cy="0" r="5.5"/><circle class="halo" cx="-11" cy="4" r="5.5"/><circle class="dot" cx="-11" cy="4" r="5.5"/><circle class="halo" cx="-5" cy="-10" r="5.5"/><circle class="dot" cx="-5" cy="-10" r="5.5"/><text class="name" x="-18" y="24" text-anchor="end">Hicksville</text></g>
+<g class="pin" data-pin="wh" tabindex="0" aria-label="West Hempstead" transform="translate(244.7 313.6)"><circle class="halo" cx="0" cy="0" r="5.5"/><circle class="dot" cx="0" cy="0" r="5.5"/><circle class="halo" cx="11" cy="-2" r="5.5"/><circle class="dot" cx="11" cy="-2" r="5.5"/><text class="name" x="-12" y="5" text-anchor="end">West Hempstead</text></g>
+<g class="pin" data-pin="rvc" tabindex="0" aria-label="Rockville Centre" transform="translate(249.9 345.6)"><circle class="halo" cx="0" cy="0" r="5.5"/><circle class="dot" cx="0" cy="0" r="5.5"/><circle class="halo" cx="11" cy="3" r="5.5"/><circle class="dot" cx="11" cy="3" r="5.5"/><circle class="halo" cx="22" cy="-1" r="5.5"/><circle class="dot" cx="22" cy="-1" r="5.5"/><text class="name" x="34" y="5" text-anchor="start">Rockville Centre</text></g>
+</svg></div>
       <figcaption class="map-foot">
         <span class="key label">
-          <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--pin)"/></svg>Holdings by town</span>
+          <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--pin)"/></svg>Holdings</span>
           <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="var(--pin)" stroke-dasharray="2 2"/></svg>Expansion markets</span>
         </span>
         <span class="label">Nassau and Suffolk Counties, New York</span>
