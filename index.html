@@ -98,19 +98,18 @@ p { margin: 0; max-width: 62ch; }
 @media (max-width: 820px) { .nav a:not(.cta) { display: none; } }
 
 /* Hero */
-.hero { position: relative; color: var(--band-fg); background: var(--band); overflow: hidden; }
-.hero-media { position: absolute; inset: 0; }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; display: block; animation: settle 2.8s var(--ease) both; }
-.hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.30) 0%, rgba(0,0,0,.10) 35%, rgba(0,0,0,.78) 100%), linear-gradient(90deg, rgba(0,0,0,.68) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,0) 75%); }
-@keyframes settle { from { transform: scale(1.06); } to { transform: scale(1); } }
-.hero .wrap { position: relative; min-height: clamp(560px, 82vh, 860px); display: grid; align-content: end; gap: 28px; padding-block: 120px clamp(40px, 6vw, 72px); }
-.hero h1 { max-width: 13ch; }
-.hero .lede { font-size: clamp(1.05rem, 1.4vw, 1.22rem); line-height: 1.55; color: rgba(255,255,255,.85); max-width: 50ch; font-weight: 300; }
-.hero-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 18px 40px; padding-top: 28px; margin-top: 12px; border-top: 1px solid rgba(255,255,255,.22); }
+.hero { color: var(--band-fg); background: var(--band); }
+.hero .wrap { display: grid; gap: 28px; padding-block: clamp(72px, 11vw, 150px) clamp(56px, 7vw, 96px); }
+.hero h1 { max-width: 12ch; }
+.hero .lede { font-size: clamp(1.1rem, 1.5vw, 1.3rem); line-height: 1.55; color: rgba(255,255,255,.78); max-width: 46ch; font-weight: 300; }
+.hero-photo { margin: clamp(24px, 4vw, 48px) 0 0; display: grid; gap: 14px; }
+.hero-photo img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 1116 / 600; object-fit: cover; animation: settle 2.4s var(--ease) both; }
+.hero-photo figcaption { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+@keyframes settle { from { opacity: .001; transform: scale(1.015); } to { opacity: 1; transform: none; } }
 .rise { animation: rise 1.1s var(--ease) both; }
 .rise.d2 { animation-delay: .12s; } .rise.d3 { animation-delay: .24s; }
 @keyframes rise { from { transform: translateY(14px); } to { transform: none; } }
-@media (prefers-reduced-motion: reduce) { .hero-media img, .rise { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hero-photo img, .rise { animation: none; } }
 .tag { font-family: var(--sans); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.6); }
 
 .link { display: inline-flex; align-items: center; gap: 14px; font-size: .74rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid currentColor; transition: gap .35s var(--ease), opacity .3s; }
@@ -282,15 +281,15 @@ p { margin: 0; max-width: 62ch; }
 
 <main id="top">
 <section class="hero">
-  <div class="hero-media"><img src="assets/99-smithtown.webp" alt="Aerial view of 99 Smithtown Bypass in Hauppauge" width="1116" height="600" fetchpriority="high"></div>
   <div class="wrap">
-    <span class="label rise" style="color: rgba(255,255,255,.75)">Outpatient medical real estate</span>
+    <span class="label rise" style="color: rgba(255,255,255,.6)">Outpatient medical real estate</span>
     <h1 class="rise d2">Places that support care.</h1>
     <p class="lede rise d3">Reiffman Group owns and operates medical outpatient buildings on Long Island and across the New York metro, backed by three generations of local real estate ownership.</p>
-    <div class="hero-foot">
-      <a class="link" href="#footprint">Our footprint <svg viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
-      <span class="tag">99 Smithtown Bypass, Hauppauge</span>
-    </div>
+    <a class="link rise d3" href="#footprint" style="justify-self: start">Our footprint <svg viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
+    <figure class="hero-photo">
+      <img src="assets/99-smithtown.webp" alt="Aerial view of 99 Smithtown Bypass in Hauppauge" width="1116" height="600" fetchpriority="high">
+      <figcaption><span class="tag">99 Smithtown Bypass, Hauppauge</span><span class="tag">Sale-leaseback and imaging conversion</span></figcaption>
+    </figure>
   </div>
 </section>
 
