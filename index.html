@@ -184,14 +184,18 @@ p { margin: 0; max-width: 62ch; }
 .map .prop:hover .dot, .map .prop:focus-visible .dot { r: 6; }
 .map .prop.is-sel .dot { r: 6.5; stroke: var(--bg); stroke-width: 2; }
 .map .prop.is-sel .halo { opacity: .4; animation: none; r: 13; }
-.map-info { display: grid; gap: 16px 32px; align-items: center; margin-top: 20px; padding: 22px; background: var(--surface); border: 1px solid var(--rule); }
+.map-stage { position: relative; }
+.map-info { position: absolute; left: 12px; right: 12px; bottom: 12px; display: grid; gap: 16px 32px; align-items: center; padding: 18px 20px; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--rule); box-shadow: 0 18px 40px -20px rgba(0,0,0,.45); }
+.map-info.pop { animation: pop .35s var(--ease); }
+@keyframes pop { from { transform: translateY(8px); opacity: .4; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .map-info.pop { animation: none; } }
 .map-info .txt { display: grid; gap: 10px; align-content: start; min-width: 0; }
-.map-info h3 { font-weight: 400; font-size: 1.35rem; letter-spacing: -.02em; }
+.map-info h3 { font-weight: 400; font-size: 1.3rem; letter-spacing: -.02em; }
 .map-info p { font-size: .98rem; line-height: 1.5; }
 .map-info img { width: 100%; height: auto; max-width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
 .map-info cite { font-style: normal; font-size: .72rem; color: var(--muted); }
 .map-info .link { justify-self: start; margin-top: 4px; }
-@media (min-width: 900px) { .map-info.has-img { grid-template-columns: 300px minmax(0, 1fr); } .map-info img { margin-bottom: 0; } }
+@media (min-width: 900px) { .map-info { left: auto; right: 24px; bottom: 24px; width: 380px; } }
 .map-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; padding-block: 18px 0; border-top: 1px solid var(--rule); }
 .key { display: flex; flex-wrap: wrap; gap: 8px 26px; }
 .key span { display: inline-flex; align-items: center; gap: 10px; }
@@ -376,6 +380,7 @@ p { margin: 0; max-width: 62ch; }
       </div>
     </div>
     <figure class="map">
+      <div class="map-stage">
       <div class="map-scroll" tabindex="0" aria-label="Map of holdings, scroll sideways"><svg viewBox="0 0 1200 705" role="group" aria-labelledby="map-title"><title id="map-title">Interactive map of Reiffman Group holdings on Long Island and expansion markets in the East End, New York City, Westchester, southern Connecticut, New Jersey and the Philadelphia area</title>
 <defs><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="7"/></pattern></defs>
 <rect class="water" width="1200" height="705"/>
@@ -414,6 +419,7 @@ p { margin: 0; max-width: 62ch; }
         <h3>Select a market</h3>
         <p class="muted">Tap a county or a shaded market to see why we are there.</p>
       </div></div>
+      </div>
       <figcaption class="map-foot">
         <span class="key label">
           <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--pin)"/></svg>Holdings</span>
@@ -623,6 +629,7 @@ p { margin: 0; max-width: 62ch; }
     if (d.c) h += '<cite>Source: ' + esc(d.c) + '</cite>';
     if (d.link) h += '<a class="link" href="' + d.link + '" target="_blank" rel="noopener">' + esc(d.lt) + ' <svg viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>';
     panel.innerHTML = h + '</div>';
+    panel.classList.remove('pop'); void panel.offsetWidth; panel.classList.add('pop');
   }
   document.querySelectorAll('.map [data-info]').forEach(function (el) {
     var d = INFO[el.dataset.info]; if (d && !el.getAttribute('aria-label')) el.setAttribute('aria-label', d.t + ', ' + d.k);
