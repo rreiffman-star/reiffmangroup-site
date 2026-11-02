@@ -102,14 +102,25 @@ p { margin: 0; max-width: 62ch; }
 .hero .wrap { display: grid; gap: 28px; padding-block: clamp(72px, 11vw, 150px) clamp(56px, 7vw, 96px); }
 .hero h1 { max-width: 12ch; }
 .hero .lede { font-size: clamp(1.1rem, 1.5vw, 1.3rem); line-height: 1.55; color: rgba(255,255,255,.78); max-width: 46ch; font-weight: 300; }
-.hero-photo { margin: clamp(24px, 4vw, 48px) 0 0; display: grid; gap: 14px; }
-.hero-photo img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 1116 / 600; object-fit: cover; animation: settle 2.4s var(--ease) both; }
-.hero-photo figcaption { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.slides-wrap { margin: clamp(24px, 4vw, 48px) 0 0; display: grid; gap: 16px; }
+.slides { display: grid; grid-auto-flow: column; grid-auto-columns: 86%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.slides::-webkit-scrollbar { display: none; }
+@media (min-width: 900px) { .slides { grid-auto-columns: 74%; gap: 20px; } }
+.slide { margin: 0; scroll-snap-align: start; display: grid; gap: 12px; min-width: 0; }
+.slide img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: #1a1a1a; }
+.slide figcaption { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; }
+.slides-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.slides-nav .count { font-size: .72rem; font-weight: 500; letter-spacing: .18em; color: rgba(255,255,255,.6); font-variant-numeric: tabular-nums; }
+.slides-nav .btns { display: flex; gap: 8px; }
+.slides-nav button { width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 1px solid rgba(255,255,255,.22); color: var(--band-fg); cursor: pointer; transition: border-color .3s, opacity .3s; }
+.slides-nav button:hover { border-color: var(--band-fg); }
+.slides-nav button:disabled { opacity: .3; cursor: default; }
+.slides-nav svg { width: 16px; height: 10px; }
 @keyframes settle { from { opacity: .001; transform: scale(1.015); } to { opacity: 1; transform: none; } }
 .rise { animation: rise 1.1s var(--ease) both; }
 .rise.d2 { animation-delay: .12s; } .rise.d3 { animation-delay: .24s; }
 @keyframes rise { from { transform: translateY(14px); } to { transform: none; } }
-@media (prefers-reduced-motion: reduce) { .hero-photo img, .rise { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .rise { animation: none; } .slides { scroll-behavior: auto; } }
 .tag { font-family: var(--sans); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.6); }
 
 .link { display: inline-flex; align-items: center; gap: 14px; font-size: .74rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid currentColor; transition: gap .35s var(--ease), opacity .3s; }
@@ -118,7 +129,7 @@ p { margin: 0; max-width: 62ch; }
 
 /* Figures */
 .figures { background: var(--bg); color: var(--fg); }
-.figures .wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: 0; }
+.figures .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-block: 0; }
 .figures + .sec > .wrap { border-top: 1px solid var(--rule); }
 .fig { padding: 56px 32px 64px 0; display: grid; gap: 10px; align-content: start; }
 .fig + .fig { padding-left: 32px; border-left: 1px solid var(--rule); }
@@ -290,17 +301,28 @@ p { margin: 0; max-width: 62ch; }
     <h1 class="rise d2">Places that support care.</h1>
     <p class="lede rise d3">Reiffman Group owns and operates medical outpatient buildings on Long Island and across the New York metro, backed by three generations of local real estate ownership.</p>
     <a class="link rise d3" href="#footprint" style="justify-self: start">Our footprint <svg viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
-    <figure class="hero-photo">
-      <img src="assets/99-smithtown.webp" alt="Aerial view of 99 Smithtown Bypass in Hauppauge" width="1116" height="600" fetchpriority="high">
-      <figcaption><span class="tag">99 Smithtown Bypass, Hauppauge</span><span class="tag">Sale-leaseback and imaging conversion</span></figcaption>
-    </figure>
+    <div class="slides-wrap">
+      <div class="slides" id="slides" tabindex="0" aria-label="Property photos">
+        <figure class="slide"><img src="assets/99-smithtown.webp" alt="Aerial view of 99 Smithtown Bypass in Hauppauge" width="1116" height="600" fetchpriority="high"><figcaption><span class="tag">99 Smithtown Bypass, Hauppauge</span><span class="tag">Sale-leaseback and conversion</span></figcaption></figure>
+        <figure class="slide"><img src="assets/700-facade.webp" alt="Front facade of 700 Old Country Road in Plainview" width="2000" height="1333" loading="lazy"><figcaption><span class="tag">700 Old Country Road, Plainview</span><span class="tag">Value-add renovation</span></figcaption></figure>
+        <figure class="slide"><img src="assets/485-underhill-front.webp" alt="485 Underhill Boulevard in Syosset" width="1536" height="1024" loading="lazy"><figcaption><span class="tag">485 Underhill Boulevard, Syosset</span><span class="tag">Medical office</span></figcaption></figure>
+        <figure class="slide"><img src="assets/755-new-york.webp" alt="Front of 755 New York Avenue in Huntington" width="1800" height="1200" loading="lazy"><figcaption><span class="tag">755 New York Avenue, Huntington</span><span class="tag">Medical office</span></figcaption></figure>
+        <figure class="slide"><img src="assets/146-manetto.webp" alt="Entrance plaza at 146 Manetto Hill Road in Plainview" width="1800" height="1200" loading="lazy"><figcaption><span class="tag">146 Manetto Hill Road, Plainview</span><span class="tag">Medical office</span></figcaption></figure>
+      </div>
+      <div class="slides-nav">
+        <span class="count" id="slide-count">01 / 05</span>
+        <div class="btns">
+          <button type="button" id="slide-prev" aria-label="Previous photo"><svg viewBox="0 0 16 10" aria-hidden="true"><path d="M16 5H1M5 1L1 5l4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></button>
+          <button type="button" id="slide-next" aria-label="Next photo"><svg viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="figures" aria-label="Firm at a glance">
   <div class="wrap">
     <div class="fig"><b>1979</b><span>Our family begins owning and operating Long Island real estate</span></div>
-    <div class="fig"><b>900,000+</b><span>Square feet across the family platform of medical office, industrial and retail</span></div>
     <div class="fig"><b>3</b><span>Generations of ownership on Long Island</span></div>
   </div>
 </section>
@@ -416,12 +438,6 @@ p { margin: 0; max-width: 62ch; }
       </article>
     </div>
 
-    <figure class="gallery">
-      <img src="assets/485-underhill-front.webp" alt="485 Underhill Boulevard, three-story medical office building in Syosset" width="1536" height="1024" loading="lazy">
-      <img src="assets/485-underhill-corner.webp" alt="Corner view of 485 Underhill Boulevard with landscaped entrance" width="1536" height="1024" loading="lazy">
-      <figcaption><span class="label">485 Underhill Boulevard, Syosset</span><span class="label">Medical office</span></figcaption>
-    </figure>
-
     <div class="holdings">
       <span class="label">Long Island holdings</span>
       <ol>
@@ -490,7 +506,7 @@ p { margin: 0; max-width: 62ch; }
       <div class="who"><h3>Ross Reiffman</h3><span class="label">Principal</span></div>
       <div class="bio">
         <p>Ross founded Reiffman Group in 2023 with Mitchell Reiffman of ROCA Management, the family's third-generation real estate company. He leads acquisitions, leasing and asset management. Before Reiffman Group he worked at Berkeley Point, Newmark and Meridian.</p>
-        <p>Reiffman Group works alongside ROCA Management, which manages the family's portfolio of more than 900,000 square feet of medical office, industrial and retail property on Long Island.</p>
+        <p>Reiffman Group works alongside ROCA Management, which manages the family's portfolio of medical office, industrial and retail property on Long Island.</p>
       </div>
     </div>
   </div>
@@ -513,6 +529,19 @@ p { margin: 0; max-width: 62ch; }
 
 <script>
 (function () {
+  var track = document.getElementById('slides');
+  if (track) {
+    var slides = track.querySelectorAll('.slide'), prev = document.getElementById('slide-prev'), next = document.getElementById('slide-next'), count = document.getElementById('slide-count');
+    function idx() { var w = slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0); return Math.round(track.scrollLeft / w); }
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function update() { var i = Math.min(idx(), slides.length - 1); count.textContent = pad(i + 1) + ' / ' + pad(slides.length); prev.disabled = track.scrollLeft < 4; next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4; }
+    function go(d) { var i = Math.max(0, Math.min(slides.length - 1, idx() + d)); track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: 'smooth' }); }
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    track.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); go(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); } });
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(update); }, { passive: true });
+    update();
+  }
   var pins = {};
   document.querySelectorAll('.pin').forEach(function (p) { pins[p.dataset.pin] = p; });
   function set(id, on) {
