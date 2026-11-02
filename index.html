@@ -225,6 +225,15 @@ p { margin: 0; max-width: 62ch; }
   .stat:nth-child(3) { padding-left: 0; border-left: 0; }
 }
 @media (max-width: 540px) { .stats { grid-template-columns: 1fr; } .stat + .stat { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); } }
+.drivers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--fg); }
+.driver { padding: 32px 40px 0 0; display: grid; gap: 18px; align-content: start; min-width: 0; }
+.driver + .driver { padding-left: 40px; padding-right: 0; border-left: 1px solid var(--rule); }
+.driver > p { color: var(--muted); max-width: 46ch; }
+@media (min-width: 901px) { .driver > p { min-height: 4.9em; } }
+.dstats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 8px; }
+.dstats .stat { padding: 0; border: 0; }
+.dstats .stat + .stat { padding-left: 0; border-left: 0; }
+@media (max-width: 900px) { .drivers { grid-template-columns: 1fr; } .driver { padding-right: 0; } .driver + .driver { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); margin-top: 40px; } }
 .cols { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; margin-top: clamp(56px, 6vw, 88px); }
 .cols p { grid-column: 4 / span 7; color: var(--muted); font-size: 1.12rem; font-weight: 300; }
 @media (max-width: 900px) { .cols p { grid-column: 1 / -1; } }
@@ -446,10 +455,23 @@ p { margin: 0; max-width: 62ch; }
         <h2>Care is moving out of hospitals and into outpatient medical buildings.</h2>
       </div>
     </div>
-    <div class="stats three">
-      <div class="stat"><b>61.2M</b><p>Americans 65 and older, up 13% since 2020</p></div>
-      <div class="stat"><b>+11M</b><p>More Americans 65 and older expected over the next decade</p></div>
-      <div class="stat"><b>+13%</b><p>Outpatient visits over the past decade, as Medicare phases out its inpatient-only procedure list</p></div>
+    <div class="drivers">
+      <div class="driver">
+        <span class="label">An aging population</span>
+        <p>Adults 65 and older use far more outpatient care than any other age group, and they are the fastest-growing part of the population.</p>
+        <div class="dstats">
+          <div class="stat"><b>61.2M</b><p>Americans 65 and older, up 13% since 2020</p></div>
+          <div class="stat"><b>+11M</b><p>More expected over the next decade</p></div>
+        </div>
+      </div>
+      <div class="driver">
+        <span class="label">Care moving out of hospitals</span>
+        <p>Procedures, imaging and specialty care are shifting to lower-cost outpatient settings, and Medicare is phasing out its inpatient-only procedure list.</p>
+        <div class="dstats">
+          <div class="stat"><b>+13%</b><p>Outpatient visits over the past decade</p></div>
+          <div class="stat"><b>&minus;10%</b><p>Hospital admissions over the same period</p></div>
+        </div>
+      </div>
     </div>
 </div>
   </div>
