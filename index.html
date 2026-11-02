@@ -196,6 +196,14 @@ p { margin: 0; max-width: 62ch; }
 .map-info cite { font-style: normal; font-size: .72rem; color: var(--muted); }
 .map-info .link { justify-self: start; margin-top: 4px; }
 @media (min-width: 900px) { .map-info { left: auto; right: 24px; bottom: 24px; width: 380px; } }
+@media (max-width: 899px) {
+  .map-info { left: 8px; right: 8px; bottom: 8px; padding: 12px 14px; gap: 6px; }
+  .map-info .txt { gap: 5px; }
+  .map-info .label { font-size: .6rem; letter-spacing: .16em; }
+  .map-info h3 { font-size: 1rem; }
+  .map-info p { font-size: .8rem; line-height: 1.4; }
+  .map-info cite { font-size: .62rem; }
+}
 .map-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; padding-block: 18px 0; border-top: 1px solid var(--rule); }
 .key { display: flex; flex-wrap: wrap; gap: 8px 26px; }
 .key span { display: inline-flex; align-items: center; gap: 10px; }
