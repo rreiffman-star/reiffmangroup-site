@@ -215,6 +215,10 @@ p { margin: 0; max-width: 62ch; }
 .project h3 { grid-column: 4 / span 4; font-size: clamp(1.6rem, 2.6vw, 2.4rem); font-weight: 300; letter-spacing: -.03em; }
 .project p { grid-column: 8 / span 5; color: var(--muted); }
 .project .facts { grid-column: 8 / span 5; display: flex; flex-wrap: wrap; gap: 6px 28px; }
+.project .facts a { font-size: .72rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); text-underline-offset: 4px; }
+.project .facts a:hover { color: var(--fg); }
+.taglink { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(255,255,255,.3); }
+.taglink:hover { color: var(--band-fg); text-decoration-color: currentColor; }
 .project .facts span { font-size: .72rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; }
 @media (max-width: 900px) { .project .where, .project h3, .project p, .project .facts { grid-column: 1 / -1; } }
 
@@ -313,8 +317,8 @@ p { margin: 0; max-width: 62ch; }
     <a class="link rise d3" href="#footprint" style="justify-self: start">Our footprint <svg viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
     <div class="slides-wrap">
       <div class="slides" id="slides" tabindex="0" aria-label="Property photos">
-        <figure class="slide"><img src="assets/99-smithtown.webp" alt="Aerial view of 99 Smithtown Bypass in Hauppauge" width="1116" height="600" fetchpriority="high"><figcaption><span class="tag">99 Smithtown Bypass, Hauppauge</span><span class="tag">Sale-leaseback and conversion</span></figcaption></figure>
-        <figure class="slide"><img src="assets/700-facade.webp" alt="Front facade of 700 Old Country Road in Plainview" width="2000" height="1333" loading="lazy"><figcaption><span class="tag">700 Old Country Road, Plainview</span><span class="tag">Value-add renovation</span></figcaption></figure>
+        <figure class="slide"><img src="assets/99-smithtown.webp" alt="Aerial view of 99 Smithtown Bypass in Hauppauge" width="1116" height="600" fetchpriority="high"><figcaption><span class="tag">99 Smithtown Bypass, Hauppauge</span><a class="tag taglink" href="https://rreiffman9.wixsite.com/my-site-3/post/reiffman-group-expands-healthcare-portfolio-with-sale-leaseback-and-redevelopment-of-radiology-facil" target="_blank" rel="noopener">Read the release &#8599;</a></figcaption></figure>
+        <figure class="slide"><img src="assets/700-facade.webp" alt="Front facade of 700 Old Country Road in Plainview" width="2000" height="1333" loading="lazy"><figcaption><span class="tag">700 Old Country Road, Plainview</span><a class="tag taglink" href="https://libn.com/2025/10/09/reiffman-plainview-medical-office-redevelopment/" target="_blank" rel="noopener">Long Island Business News &#8599;</a></figcaption></figure>
         <figure class="slide"><img src="assets/485-underhill-front.webp" alt="485 Underhill Boulevard in Syosset" width="1536" height="1024" loading="lazy"><figcaption><span class="tag">485 Underhill Boulevard, Syosset</span><span class="tag">Medical office</span></figcaption></figure>
         <figure class="slide"><img src="assets/755-new-york.webp" alt="Front of 755 New York Avenue in Huntington" width="1800" height="1200" loading="lazy"><figcaption><span class="tag">755 New York Avenue, Huntington</span><span class="tag">Medical office</span></figcaption></figure>
         <figure class="slide"><img src="assets/146-manetto.webp" alt="Entrance plaza at 146 Manetto Hill Road in Plainview" width="1800" height="1200" loading="lazy"><figcaption><span class="tag">146 Manetto Hill Road, Plainview</span><span class="tag">Medical office</span></figcaption></figure>
@@ -440,7 +444,7 @@ p { margin: 0; max-width: 62ch; }
         <span class="label where">Plainview</span>
         <h3>700 Old Country Road</h3>
         <p>A 33,000 SF medical and retail building under renovation. New facade, site and suites, with new medical tenants including a specialty infusion provider.</p>
-        <div class="facts"><span>33,000 SF</span><span>Value-add</span><span>2025</span></div>
+        <div class="facts"><span>33,000 SF</span><span>Value-add</span><span>2025</span><a href="https://libn.com/2025/10/09/reiffman-plainview-medical-office-redevelopment/" target="_blank" rel="noopener">In the press &#8599;</a></div>
       </article>
       <article class="project">
         <span class="label where">Rockville Centre</span>
